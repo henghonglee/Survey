@@ -1,7 +1,6 @@
 import React from "react"
-import { logout } from "../utils/auth"
 import { Link } from "gatsby"
-import { login, isAuthenticated } from "../utils/auth"
+import { logout, login, isAuthenticated } from "../../utils/auth"
 
 const Layout = ({children}) => {
   
