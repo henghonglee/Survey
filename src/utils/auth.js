@@ -39,6 +39,7 @@ export const login = () => {
 
 const setSession = (cb = () => {}) => (err, authResult) => {
   if (err) {
+    console.log(err)
     navigate("/")
     cb()
     return
@@ -51,7 +52,7 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     tokens.expiresAt = expiresAt
     user = authResult.idTokenPayload
     localStorage.setItem("isLoggedIn", true)
-    navigate("/home")
+    navigate("/profile")
     cb()
   }
 }
