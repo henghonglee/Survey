@@ -1,6 +1,13 @@
 module.exports = {
   plugins: [
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
@@ -10,7 +17,8 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve(`./src/components/resources/layout.js`)
+          resources: require.resolve(`./src/components/resources/layout.js`),
+          default: require.resolve(`./src/components/layout.js`)
         },
       }
     },
