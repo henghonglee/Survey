@@ -5,12 +5,13 @@ import Layout from '../../components/layout';
 const Resources = ({ data }) => (
   <Layout>
     <h1>Resources</h1>
-    {
-        data.allMdx.edges.map((e) => <p>{JSON.stringify(e.node.id)}</p>)
+    <ul>
+      {
+        data.allMdx.edges.map((e) => {
+          return <li><Link to={e.node.fields.slug}> {e.node.frontmatter.title} </Link></li>   
+        })
       }
-    <Link to="/resources/1"> 1 </Link>
-    <Link to="/resources/2"> 2 </Link>
-    <Link to="/resources/3"> 3 </Link>
+    </ul>
   </Layout>
 );
 
@@ -20,6 +21,12 @@ query AllMdx {
     edges {
       node {
         id
+        frontmatter {
+          title
+        }
+        fields {
+          slug
+        }
       }
     }
   }

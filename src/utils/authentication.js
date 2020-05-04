@@ -1,12 +1,12 @@
-import React from 'react';
-import { login, isAuthenticated } from './auth';
+import React from "react"
+import { login, isAuthenticated } from "./auth"
 
-const withAuthentication = (inner) => () => {
+const withAuthentication = inner => () => {
   if (!isAuthenticated()) {
-    login();
-    return <p>Redirecting to login...</p>;
+    login()
+    return <p>Redirecting to login...</p>
   }
-  return inner();
-};
+  return inner()
+}
 
-export default withAuthentication;
+export default withAuthentication
