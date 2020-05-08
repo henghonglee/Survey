@@ -13,12 +13,14 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-page-creator`,
-    //   options: {
-    //     path: `${__dirname}/src/pages/resources`,
-    //   },
-    // },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "HasuraGraphDB",
+        fieldName: "hasura",
+        url: "http://localhost:8080/v1/graphql",
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
