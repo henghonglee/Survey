@@ -1,20 +1,12 @@
 import React from "react"
 import Layout from "../components/layout"
-import { graphql } from 'gatsby';
 import ReactJson from 'react-json-view'
+import { useSubscription } from 'react-apollo-hooks';
+import gql from 'graphql-tag';
 
-const Home = ({data}) => (
-  <Layout>
-    <h1>Home</h1>
-    <ReactJson src={data} />
-    <p>Hi, friend!</p>
-  </Layout>
-)
-
-export const query = graphql`
-query {
-  hasura {
-    Company {
+const GET_DATA = gql`
+subscription {
+  Company(where: {id: {_eq: 2}}) {
     employees {
       id
       first_name
@@ -37,8 +29,18 @@ query {
       }
     }
   }
-  }
 }
 `;
+
+
+const Home = () => {
+  const { loading, error, data } = useSubscription(GET_DATA)
+  return (
+    <Layout>
+      <h1>Home</h1>
+      <ReactJson src={data} />
+    </Layout>
+  )
+}
 
 export default Home

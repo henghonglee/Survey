@@ -1,3 +1,7 @@
+require("dotenv").config()
+const fetch = require('isomorphic-fetch')
+const { createHttpLink } = require('apollo-link-http')
+
 module.exports = {
   plugins: [
     {
@@ -11,14 +15,6 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    {
-      resolve: "gatsby-source-graphql",
-      options: {
-        typeName: "HasuraGraphDB",
-        fieldName: "hasura",
-        url: "http://localhost:8080/v1/graphql",
       },
     },
     {
